@@ -33,7 +33,7 @@
         homeConfigurations = {
             elliana = mkShellHome { user = elliana; };
             ellianap = mkShellHome {
-                user = elliana // { username = "ellianap" };
+                user = elliana // { username = "ellianap"; };
             };
         };
     };
