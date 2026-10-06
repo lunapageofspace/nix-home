@@ -1,12 +1,12 @@
-_: {
+{ user, ... }: {
     programs.git = {
         enable = true;
-        extraConfig = {
+        settings = {
             pull.rebase = false;
             #commit.gpgSign = true;
             init.defaultBranch = "main";
-            user.name = "Elliana Perry";
-            user.email = "elliana.perry@gmail.com";
+            user.name = user.gecos;
+            user.email = user.email;
         };
     };
 }

@@ -23,7 +23,7 @@ in {
     programs.zsh = {
         enable = true;
         autocd = true;
-        dotDir = ".config/zsh";
+        dotDir = "${config.xdg.configHome}/zsh";
 
         envExtra = ''
             ZSH_SELF_LSPWD=true
