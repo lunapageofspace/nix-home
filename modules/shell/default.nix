@@ -1,4 +1,4 @@
-_: {
+{ pkgs, ... }: {
   imports = [
     ./bat.nix
     ./direnv.nix
@@ -8,5 +8,8 @@ _: {
     ./lsd.nix
     ./nvim.nix
     ./zsh.nix
+  ];
+  home.packages = with pkgs; [
+    skim fd perl
   ];
 }
