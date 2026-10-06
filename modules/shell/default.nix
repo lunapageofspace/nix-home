@@ -7,7 +7,6 @@ _: {
     ./gpg.nix
     ./lsd.nix
     ./nvim.nix
-    ./packages.nix
     ./starship.nix
     ./zsh.nix
   ];
