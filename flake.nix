@@ -13,7 +13,7 @@
             pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
             extraSpecialArgs = { inherit user; };
             modules = [
-                { ./modules/shell }
+                ./modules/shell
                 {
                     home.stateVersion = "24.05";
                     home.username = user.username;
