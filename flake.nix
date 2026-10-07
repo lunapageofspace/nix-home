@@ -35,6 +35,9 @@
             ellianap = mkShellHome {
                 user = elliana // { username = "ellianap"; };
             };
+            ellianapadmin = mkShellHome {
+                user = elliana // { username = "ellianapadmin"; };
+            };
         };
     };
 }
