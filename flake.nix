@@ -9,8 +9,8 @@
     };
     outputs = { self, nixpkgs, home-manager, ... }:
     let
-        mkShellHome = { user, homeDirectory ? "/home/${user.username}" }: home-manager.lib.homeManagerConfiguration {
-            pkgs = import nixpkgs { system = "x86_64-linux"; config.allowUnfree = true; };
+        mkShellHome = { user, system ? "x86_64-linux", homeDirectory ? "/home/${user.username}" }: home-manager.lib.homeManagerConfiguration {
+            pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             extraSpecialArgs = { inherit user; };
             modules = [
                 ./modules/shell
@@ -29,15 +29,10 @@
             email = "elliana.perry@gmail.com";
         };
     in {
-        homeModules.default = ./modules/shell;
-        homeConfigurations = {
-            elliana = mkShellHome { user = elliana; };
-            ellianap = mkShellHome {
-                user = elliana // { username = "ellianap"; };
-            };
-            ellianapadmin = mkShellHome {
-                user = elliana // { username = "ellianapadmin"; };
-            };
-        };
+        homeConfigurations = nixpkgs.lib.genAttrs 
+            [ "elliana" "ellianap" "ellianapadmin" ] 
+            (username: mkShellHome {
+                user = elliana // { inherit username; };
+        });
     };
 }
