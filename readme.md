@@ -1,23 +1,3 @@
-# Nis Home-Manager configuration
-
-This repository contains my basic shell configuration.
-
-I decided to detach home-manager from the nixos system configuration for versatility.
-
-## Bootstrapping
-
-To install this configuration on a given host without a preexisting home-manager configuration installed:
-
-`nix run home-manager/release-26.05 -- switch -b bak --refresh --flake github:lunapageofspace/nix-home#elliana`
-
-Subsequent updates or switches can then be done using:
-
-`home-manager switch --flake github:lunapageofspace/nix-home`
-
-## Updating
-
-Updates to the flake can be performed using:
-
 # Nix Home-Manager configuration
 
 This repository contains my basic shell configuration.
@@ -29,7 +9,7 @@ I decided to detach home-manager from the NixOS system configuration for versati
 Nix with flakes enabled. On non-NixOS hosts with a multi-user install, add this to
 `/etc/nix/nix.conf` and restart the daemon:
 
-```
+```ini
 experimental-features = nix-command flakes
 ```
 
