@@ -10,7 +10,7 @@ let
         sudo  = sudoAlias;
     };
     generalAliases = {
-        llo   = "${pkgs.lsd}/bin/lsd --long --permissions octal";   # Show octal permissions
+        llo   = "${pkgs.lsd}/bin/lsd --long --permission octal";   # Show octal permissions
         cat   = "bat -Pp";                                  # Use bat instead of cat
         ip    = "ip --color=auto";                          # Color IP command
         mkdir = "mkdir -pv";                                # Always create directory trees
@@ -31,13 +31,13 @@ in {
         '';
 
         history = {
-                path = "${config.xdg.dataHome}/zsh/history";
-                size = 50000;
-                save = 50000;
-                extended = false;
-                ignoreSpace = true;
-                ignoreDups = true;
-                share = true;
+            path = "${config.xdg.dataHome}/zsh/history";
+            size = 50000;
+            save = 50000;
+            extended = false;
+            ignoreSpace = true;
+            ignoreDups = true;
+            share = true;
         };
 
         initContent = lib.concatMapStrings builtins.readFile [
