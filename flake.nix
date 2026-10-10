@@ -9,7 +9,12 @@
     };
     outputs = { self, nixpkgs, home-manager, ... }:
     let
-        mkShellHome = { user, system ? "x86_64-linux", homeDirectory ? "/home/${user.username}" }: home-manager.lib.homeManagerConfiguration {
+        mkShellHome = {
+            username, 
+            modules ? [],
+            system ? "x86_64-linux",
+            homeDirectory ? "/home/${user.username}",
+        }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             extraSpecialArgs = { inherit user; };
             modules = [
@@ -22,17 +27,10 @@
                     targets.genericLinux.enable = true;
                 }
             ];
-        };
-        elliana = {
-            username = "elliana";
-            gecos = "Elliana Perry";
-            email = "elliana.perry@gmail.com";
-        };
+        } ++ modules;
     in {
         homeConfigurations = nixpkgs.lib.genAttrs 
             [ "elliana" "ellianap" "ellianapadmin" ] 
-            (username: mkShellHome {
-                user = elliana // { inherit username; };
-        });
+            (username: mkShellHome { inherit username; modules = [ ./modules/elliana ]; });
     };
 }
