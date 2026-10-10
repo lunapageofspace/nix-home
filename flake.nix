@@ -13,7 +13,7 @@
             username, 
             modules ? [],
             system ? "x86_64-linux",
-            homeDirectory ? "/home/${user.username}",
+            homeDirectory ? "/home/${username}",
         }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             extraSpecialArgs = { inherit user; };
@@ -21,7 +21,7 @@
                 ./modules/shell
                 {
                     home.stateVersion = "24.05";
-                    home.username = user.username;
+                    home.username = username;
                     home.homeDirectory = homeDirectory;
                     programs.home-manager.enable = true;
                     targets.genericLinux.enable = true;
