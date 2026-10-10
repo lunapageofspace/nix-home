@@ -25,8 +25,8 @@
                     programs.home-manager.enable = true;
                     targets.genericLinux.enable = true;
                 }
-            ];
-        } ++ modules;
+            ] ++ modules;
+        };
     in {
         homeConfigurations = nixpkgs.lib.genAttrs 
             [ "elliana" "ellianap" "ellianapadmin" ] 
