@@ -26,19 +26,21 @@ in {
     };
     programs.ssh = {
         enable =true;
-        settings."*" = {
-            AddKeysToAgent = "no";
-            ForwardAgent = false;
-            Compression = true;
-            ServerAliveInterval = 15;
-            ServerAliveCountMax = 3;
-            HashKnownHosts = false;
-            UserKnownHostsFile = "~/.ssh/known_hosts";
-            ControlMaster = "no";
-            ControlPath = "~/.ssh/master-%r@%n:%p";
-            ControlPersist = "no";
-            TCPKeepAlive = "yes";
-            PKCS11Provider = "${pkgs.yubico-piv-tool}/lib/libykcs11.so";
+        settings = {
+            "*" = {
+                AddKeysToAgent = "no";
+                ForwardAgent = false;
+                Compression = true;
+                ServerAliveInterval = 15;
+                ServerAliveCountMax = 3;
+                HashKnownHosts = false;
+                UserKnownHostsFile = "~/.ssh/known_hosts";
+                ControlMaster = "no";
+                ControlPath = "~/.ssh/master-%r@%n:%p";
+                ControlPersist = "no";
+                TCPKeepAlive = "yes";
+                PKCS11Provider = "${pkgs.yubico-piv-tool}/lib/libykcs11.so";
+            };
             "hecate.zynthovian.xyz" = { ForwardAgent = true; };
             "apollon.zynthovian.xyz" = { ForwardAgent = true; };
         };
