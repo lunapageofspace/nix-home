@@ -11,12 +11,6 @@ in {
             user.email = "elliana.perry@gmail.com";
         };
     };
-    programs.ssh = {
-        enable =true;
-        extraConfig = ''
-            PKCS11Provider "${pkgs.yubico-piv-tool}/lib/libykcs11.so"
-        '';
-    };
     programs.gpg = {
         enable = true;
         publicKeys = [{
@@ -29,6 +23,25 @@ in {
         sshKeys = [
             "7E526BF08BDE22EAB03F7540B35EBA69910F6A4E"
         ];
+    };
+    programs.ssh = {
+        enable =true;
+        settings."*" = {
+            AddKeysToAgent = "no";
+            ForwardAgent = false;
+            Compression = true;
+            ServerAliveInterval = 15;
+            ServerAliveCountMax = 3;
+            HashKnownHosts = false;
+            UserKnownHostsFile = "~/.ssh/known_hosts";
+            ControlMaster = "no";
+            ControlPath = "~/.ssh/master-%r@%n:%p";
+            ControlPersist = "no";
+            TCPKeepAlive = "yes";
+            PKCS11Provider = "${pkgs.yubico-piv-tool}/lib/libykcs11.so"
+            "hecate.zynthovian.xyz" = { ForwardAgent = true; };
+            "apollon.zynthovian.xyz" = { ForwardAgent = true; };
+        };
     };
     home.packages = [ pkgs.yubico-piv-tool ];
     home.activation.authorizedKeys = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
