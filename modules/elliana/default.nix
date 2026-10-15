@@ -38,7 +38,7 @@ in {
             ControlPath = "~/.ssh/master-%r@%n:%p";
             ControlPersist = "no";
             TCPKeepAlive = "yes";
-            PKCS11Provider = "${pkgs.yubico-piv-tool}/lib/libykcs11.so"
+            PKCS11Provider = "${pkgs.yubico-piv-tool}/lib/libykcs11.so";
             "hecate.zynthovian.xyz" = { ForwardAgent = true; };
             "apollon.zynthovian.xyz" = { ForwardAgent = true; };
         };
