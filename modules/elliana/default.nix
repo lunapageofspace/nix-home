@@ -1,7 +1,7 @@
 { lib, pkgs, user, ... }:
 let
     keysFile = pkgs.writeText "authorized_keys" (lib.concatLines [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKJM4tUWj387mgpedyOnJLKsNvm29FSeXxawheAY3szq openpgp:yk-22730621"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILldl7APHiXrjz5+XORRTCvc8FNPWE6qo9T7LjXwinQd openpgp:0xDCB1825D"
     ]);
 in {
     programs.git = {
