@@ -9,6 +9,16 @@
     };
     outputs = { self, nixpkgs, home-manager, ... }:
     let
+
+        baseModule = { ... }: {
+            imports = [ ./modules/shell ];
+            programs.home-manager.enable = true;
+        };
+
+        userModules = {
+            elliana = { imports = [ ./modules/elliana ]; };
+        }
+
         mkShellHome = {
             username, 
             modules ? [],
@@ -17,19 +27,21 @@
         }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
             modules = [
-                ./modules/shell
+                baseModule
                 {
-                    home.stateVersion = "24.05";
+                    home.stateVersion = "26.05";
                     home.username = username;
                     home.homeDirectory = homeDirectory;
-                    programs.home-manager.enable = true;
                     targets.genericLinux.enable = true;
                 }
             ] ++ modules;
         };
     in {
+        homeModules = {
+            default = baseModule;
+        } // userModules;
         homeConfigurations = nixpkgs.lib.genAttrs 
             [ "elliana" "ellianap" "ellianapadmin" ] 
-            (username: mkShellHome { inherit username; modules = [ ./modules/elliana ]; });
+            (username: mkShellHome { inherit username; modules = [ userModules.elliana ]; });
     };
 }
