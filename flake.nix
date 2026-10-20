@@ -17,7 +17,7 @@
 
         userModules = {
             elliana = { imports = [ ./modules/elliana ]; };
-        }
+        };
 
         mkShellHome = {
             username, 
