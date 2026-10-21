@@ -16,7 +16,7 @@
         };
 
         userModules = {
-            elliana = { imports = [ ./modules/elliana ]; };
+            elliana = baseModule // { imports = [ ./modules/elliana ]; };
         };
 
         mkShellHome = {
