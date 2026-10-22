@@ -12,6 +12,8 @@ zstyle ':completion:*' menu select
 zstyle ':completion:*' list-colors ''
 
 # - { Keybinds } ---------------------------------------------------------------------------- #
+# Delete key deletes
+bindkey '^[[3~' delete-char
 # Use ctrl+{arrows} to jump around words
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word

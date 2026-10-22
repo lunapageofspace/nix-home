@@ -19,7 +19,7 @@
         };
 
         userModules = {
-            elliana = { imports = [ ./modules/elliana ]; };
+            elliana = { ... }: { imports = [ ./modules/elliana ]; };
         };
 
         mkShellHome = {

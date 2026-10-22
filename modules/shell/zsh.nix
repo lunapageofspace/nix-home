@@ -40,6 +40,7 @@ in {
             share = true;
         };
 
+        completionInit = "autoload -U compinit && compinit -u";
         initContent = lib.concatMapStrings builtins.readFile [
             ./config/zshrc
         ];
