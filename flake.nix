@@ -11,8 +11,11 @@
     let
 
         baseModule = { ... }: {
-            imports = [ ./modules/shell ];
             programs.home-manager.enable = true;
+            imports = [
+                ./modules/shell
+                ./modules/desktop
+            ];
         };
 
         userModules = {
