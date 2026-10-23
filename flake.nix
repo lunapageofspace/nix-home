@@ -7,7 +7,7 @@
             inputs.nixpkgs.follows = "nixpkgs";
         };
     };
-    outputs = { self, nixpkgs, home-manager, ... }:
+    outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
 
         baseModule = { ... }: {
@@ -29,6 +29,7 @@
             homeDirectory ? "/home/${username}",
         }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+            extraSpecialArgs = { inherit inputs; };
             modules = [
                 baseModule
                 {

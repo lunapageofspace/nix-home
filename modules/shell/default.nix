@@ -10,6 +10,7 @@
     ./zsh.nix
   ];
   home.packages = with pkgs; [
-    skim fd perl
+    skim fd perl yazi
+    zellij
   ];
 }
