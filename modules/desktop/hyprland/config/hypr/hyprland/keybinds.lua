@@ -1,4 +1,5 @@
 local mainMod = "SUPER"
+local terminal = "kitty"
 
 hl.bind(mainMod .. " + L", hl.dsp.exec_cmd("hyprlock"))
 hl.bind(mainMod .. " + M", hl.dsp.window.move({ workspace = "special:minimized" }))

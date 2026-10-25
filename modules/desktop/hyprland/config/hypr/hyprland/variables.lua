@@ -7,7 +7,7 @@
 
 local variables = {
     -- Keys
-    mainMod = "SUPER"
+    mainMod = "SUPER",
 
     -- Programs
     terminal = "kitty",
