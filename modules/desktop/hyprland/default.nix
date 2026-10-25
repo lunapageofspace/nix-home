@@ -1,6 +1,7 @@
 { pkgs, config, ... }: let
     configs = {
-        #hypr = "hypr";
+        hypr = "hypr";
+        waybar = "waybar";
     };
 in {
     imports = [
