@@ -2,6 +2,7 @@
     description = "Home Manager configuration";
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+        nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.8.0";
         home-manager = {
             url = "github:nix-community/home-manager/release-26.05";
             inputs.nixpkgs.follows = "nixpkgs";
@@ -13,6 +14,7 @@
         baseModule = { ... }: {
             programs.home-manager.enable = true;
             imports = [
+                inputs.nix-flatpak.homeManagerModules.nix-flatpak
                 ./modules/shell
                 ./modules/desktop
             ];
@@ -26,6 +28,9 @@
             username, 
             modules ? [],
             system ? "x86_64-linux",
+            desktop ? null,
+            hardware ? {},
+            extra ? {},
             homeDirectory ? "/home/${username}",
         }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
