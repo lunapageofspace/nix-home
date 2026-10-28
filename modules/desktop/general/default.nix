@@ -1,4 +1,4 @@
-{ extra ? {}, hardware ? {}, ... }: {
+{ extra ? {}, hardware ? {}, lib, ... }: {
     imports = []
         ++ lib.optional ((extra.fullDesktop or false) == true) [
             ./discord.nix
