@@ -8,10 +8,10 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.workspace.toggle_special("minimized"))
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 
-hl.bind(mainMod .. " + SHIFT + Q", hl.dsp.window.close())
+hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("hyprctl reload"))
 
-hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(menu))
+--hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list | wofi --dmenu | cliphist decode | wl-copy"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("swaync-client -t -sw"))
 
@@ -33,8 +33,7 @@ hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen())
 
 -- Maximize (fills screen, keeps waybar/decorations visible)
 -- If this errors as "expected a dispatcher" on reload, swap to the fallback:
--- hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen 1"))
-hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = 1 }))
+hl.bind(mainMod .. " + SHIFT + F", hl.dsp.exec_cmd("hyprctl dispatch fullscreen 1"))
 hl.bind(mainMod .. " + SHIFT + space", hl.dsp.window.float({ action = "toggle" }))
 
 -- Resize by holding mod + right-click drag

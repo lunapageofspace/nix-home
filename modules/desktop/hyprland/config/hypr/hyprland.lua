@@ -5,8 +5,8 @@ hl.monitor({
   scale = 1,
 })
 
+require("hyprland/keybinds")
 require("hyprland/variables")
 require("hyprland/cybrland")
-require("hyprland/colors")
 
 

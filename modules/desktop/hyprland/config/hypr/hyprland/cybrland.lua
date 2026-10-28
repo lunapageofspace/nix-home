@@ -5,7 +5,7 @@
 -- Source:     ~/.config/hypr/theme.lua
 ---------------------------------------
 
-local variables = require("variables")
+local variables = require("hyprland/variables")
 
 local colors = {
     -- BLACK
