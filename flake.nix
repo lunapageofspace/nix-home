@@ -54,6 +54,16 @@
         } // userModules;
         homeConfigurations = nixpkgs.lib.genAttrs 
             [ "elliana" "ellianap" "ellianapadmin" ] 
-            (username: mkShellHome { inherit username; modules = [ userModules.elliana ]; });
+            (username: mkShellHome { inherit username; modules = [ userModules.elliana ]; })
+            // {
+                default = let
+                    user = builtins.getEnv "USER";
+                    home = builtins.getEnv "HOME";
+                in
+                if user == "" then
+                    throw "homeConfigurations.default needs --impure (reads $USER/$HOME)"
+                else
+                    mkShellHome { username = user; homeDirectory = home; };
+            };
     };
 }
