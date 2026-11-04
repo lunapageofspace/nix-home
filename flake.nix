@@ -34,7 +34,10 @@
             homeDirectory ? "/home/${username}",
         }: home-manager.lib.homeManagerConfiguration {
             pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
-            extraSpecialArgs = { inherit inputs; };
+            extraSpecialArgs = {
+                inherit inputs desktop hardware extra;
+                user = username;
+            };
             modules = [
                 baseModule
                 {
