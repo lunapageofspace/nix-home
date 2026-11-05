@@ -10,6 +10,9 @@
         };
     };
     home.packages = with pkgs; [
+        git-filter-repo
+        git-annex
         git-xet
+        gitui
     ];
 }
