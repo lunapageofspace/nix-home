@@ -7,10 +7,10 @@
     ./gpg.nix
     ./lsd.nix
     ./nvim.nix
+    ./zellij.nix
     ./zsh.nix
   ];
   home.packages = with pkgs; [
-    skim fd perl yazi
-    zellij
+    skim fd perl
   ];
 }
