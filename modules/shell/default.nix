@@ -7,6 +7,7 @@
     ./gpg.nix
     ./lsd.nix
     ./nvim.nix
+    ./yazi.nix
     ./zellij.nix
     ./zsh.nix
   ];

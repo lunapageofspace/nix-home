@@ -22,7 +22,9 @@ bindkey '^H' backward-kill-word
 bindkey '^[[3;5~' kill-word
 # Use {arrows} with substring search
 bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey '^[[A' history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[B' history-substring-search-down
 # Home and end
 bindkey '^[[F' end-of-line
 bindkey '^[[H' beginning-of-line
