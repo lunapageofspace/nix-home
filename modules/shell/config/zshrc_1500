@@ -1,0 +1,24 @@
+
+# --{ Dynamically load shell completions provided by nix dev shells } ----------------------- #
+
+typeset -ga _base_fpath=($fpath)
+typeset -g  _last_nix_path=""
+
+_nix_devshell_completions() {
+  [[ $PATH == $_last_nix_path ]] && return
+  _last_nix_path=$PATH
+
+  local -a extra
+  local p d
+  for p in ${(s.:.)PATH}; do
+    [[ $p == /nix/store/* ]] || continue
+    d=${p:h}/share/zsh/site-functions
+    [[ -d $d ]] && extra+=($d)
+  done
+
+  fpath=(${(u)extra} $_base_fpath)
+  autoload -Uz compinit && compinit -i -D
+}
+
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _nix_devshell_completions

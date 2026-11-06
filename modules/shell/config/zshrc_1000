@@ -1,3 +1,6 @@
+
+# - { define shell configuration options } --------------------------------------------------- #
+
 setopt rematch_pcre            # Match regular expressions using PCRE if available
 setopt hist_reduce_blanks      # Reduce whitespace from commands
 setopt autopushd pushdminus pushdsilent   # Use pushd when cd-ing around

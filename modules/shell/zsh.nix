@@ -41,8 +41,9 @@ in {
         };
 
         completionInit = "autoload -U compinit && compinit -u";
-        initContent = lib.concatMapStrings builtins.readFile [
-            ./config/zshrc
+        initContent = lib.mkMerge [
+             (lib.mkOrder 1000 (builtins.readFile ./config/zshrc_1000 ))
+             (lib.mkOrder 1500 (builtins.readFile ./config/zshrc_1500 ))
         ];
 
         shellAliases = generalAliases // sudoAliases;
